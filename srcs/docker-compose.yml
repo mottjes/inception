@@ -1,8 +1,14 @@
 services:
   nginx:
     container_name: nginx
-    build: nginx
+    build: requirements/nginx
     image: nginx:42
     ports:
       - "443:443"
+    restart: always
+  
+  wordpress:
+    container_name: wordpress
+    build: requirements/wordpress
+    image: wordpress:42
     restart: always

@@ -15,4 +15,6 @@
 #Docker compose
 #https://gabrieltanner.org/blog/docker-compose/
 
+#TODO:
 #docker secrests for TLS certificate ???
+#restart and image directive in composefile
