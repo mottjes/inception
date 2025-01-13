@@ -2,13 +2,15 @@ services:
   nginx:
     container_name: nginx
     build: requirements/nginx
-    image: nginx:42
     ports:
-      - "443:443"
-    restart: always
-  
+      - "80:80"
+    volumes:
+      - ./web:/var/www/html
   wordpress:
     container_name: wordpress
     build: requirements/wordpress
-    image: wordpress:42
-    restart: always
+    volumes:
+      - ./web:/var/www/html
+  mariadb:
+    container_name: mariadb
+    build: requirements/mariadb

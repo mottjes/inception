@@ -1,17 +1,16 @@
-# Pull the debian image
+# pull debian bullseye as base image
 FROM debian:bullseye
 
-# Update System, install nginx and generate a self-signed SSL/TLS certificate and its corresponding private key using OpenSSL.
-RUN apt -y update && \
-    apt -y upgrade && \
-    apt -y install nginx openssl && \
-    openssl req -new -x509 -days 365 -nodes -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt -subj '/C=DE/ST=NI/L=Wolfsburg/CN=mottjes.42.fr'
+# update system and install nginx
+RUN apt update -y && \
+    apt upgrade -y && \
+    apt install nginx -y
 
-# Copy the nginx config into the container
-COPY ./conf/nginx.conf /etc/nginx/conf.d
+# allow port
+EXPOSE 80
 
-# Allow port
-EXPOSE 443
+# copy config to container
+COPY ./conf/default /etc/nginx/sites-available/default
 
-# Starts nginx in foreground
+# run nginx in foreground
 CMD ["nginx", "-g", "daemon off;"]
