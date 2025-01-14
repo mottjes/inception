@@ -9,6 +9,7 @@
 #https://docs.oracle.com/en/operating-systems/oracle-linux/certmanage/certmanage-UsingOpenSSLinEnterpriseLinux.html#openssl-signing
 
 #Guides:
+#http://tuto.grademe.fr/inception/#accueil
 #https://medium.com/@ssterdev/inception-guide-42-project-part-i-7e3af15eb671
 #https://github.com/Forstman1/inception-42/tree/main
 
@@ -17,4 +18,5 @@
 
 #TODO:
 #docker secrests for TLS certificate ???
+#https://gist.github.com/xameeramir/a5cb675fb6a6a64098365e89a239541d -> nginx defualt conf
 #restart and image directive in composefile

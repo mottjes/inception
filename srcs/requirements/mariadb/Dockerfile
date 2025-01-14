@@ -1,4 +1,4 @@
-## pull debian bullseye as base image
+# pull debian bullseye as base image
 FROM debian:bullseye
 
 # update system and install mariadb
