@@ -5,12 +5,50 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./web:/var/www/html
+      - wordpress_data:/var/www/html
+    networks:
+      - inception
+    depends_on:
+      - wordpress
+    restart: always
   wordpress:
     container_name: wordpress
     build: requirements/wordpress
+    env_file: 
+      - .env
     volumes:
-      - ./web:/var/www/html
+      - wordpress_data:/var/www/html
+    networks:
+      - inception
+    depends_on:
+      - mariadb
+    restart: always
   mariadb:
     container_name: mariadb
     build: requirements/mariadb
+    env_file: 
+      - .env
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - inception
+    restart: always
+
+volumes:
+  wordpress_data:
+    driver: local
+    driver_opts:
+      device: $HOME/data/wordpress
+      type: none
+      o: bind
+    
+  mariadb_data:
+    driver: local
+    driver_opts:
+      device: $HOME/data/mariadb
+      type: none
+      o: bind
+
+networks:
+  inception:
+    driver: bridge

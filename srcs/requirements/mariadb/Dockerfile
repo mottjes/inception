@@ -1,21 +1,24 @@
-# pull debian bullseye as base image
+# Use Debian Bullseye as the base image
 FROM debian:bullseye
 
-# update system and install mariadb
-RUN apt update -y && \
+# Update package lists and install MariaDB server
+RUN apt update && \
     apt upgrade -y && \
-    apt install mariadb-server -y
+    apt install -y mariadb-server && \
+# create necessary directory for the socket for MariaDb
+    mkdir -p /run/mysqld && \
+# sets correct permissions for the directory where the socket is being created
+    chown mysql:mysql /run/mysqld && \
+    chmod 755 /run/mysqld
 
-# allow port
+# Expose the default MariaDB port
 EXPOSE 3306
 
-# copy config and iniit.sql to container
-COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/.
-COPY ./conf/init.sql /etc/mysql/init.sql
+# Copy MariaDB config to container
+COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
 
-# Create the necessary directory for the socket file
-RUN mkdir -p /run/mysqld && \
-    chown -R mysql:mysql /run/mysqld
+# Copy MariaDB init script to container
+COPY ./tools/init.sql /etc/mysql/init.sql
 
-# run mairadb in foreground
+# Start MariaDB in the foreground
 CMD ["mysqld"]

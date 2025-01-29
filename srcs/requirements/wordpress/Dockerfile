@@ -1,21 +1,30 @@
-# pull debian bullseye as base image
+# Use Debian Bullseye as the base image
 FROM debian:bullseye
 
-# update system and install php-fpm and curl
-RUN apt update -y && \
+# Update package lists and install PHP-FPM and curl
+RUN apt update && \
     apt upgrade -y && \
-    apt install php-fpm php-mysqli curl -y
+    apt install -y \
+    php7.4-fpm \
+    php7.4-mysql \
+    curl  && \
+# create necessary directory for the socket for PHP_FPM
+    mkdir -p /run/php 
 
-# create folder to start php-fpm
-RUN mkdir -p /run/php
-
-# allow port
+# Expose port 9000
 EXPOSE 9000
 
-# copy config and script to container
-COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/.
-COPY ./conf/script.sh .
-RUN chmod +x script.sh
+# Copy PHP-FPM config to container
+COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/
 
-# run script to start php-fpm in foreground
-CMD ["./script.sh"]
+# Copy PHP-FPM config to container
+COPY ./tools/entrypoint.sh .
+
+# Make the entrypoint script executable
+RUN chmod +x entrypoint.sh
+
+# Set the entrypoint to the script
+ENTRYPOINT ["./entrypoint.sh"]
+
+# provides default arguments for the ENTRYPOINT
+CMD ["php-fpm7.4", "-F"]
