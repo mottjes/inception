@@ -4,15 +4,6 @@ Inception is a System Administration project focused on Docker and containerizat
 
 ## Overview
 
-- Use Alpine or Debian (penultimate stable version)
-- Custom Dockerfiles for each service
-- No ready-made Docker images (except Alpine/Debian)
-- Two users in WordPress database (one administrator)
-- NGINX as the only entrypoint (port 443, TLSv1.2 or TLSv1.3)
-- Use of environment variables (recommended: .env file and Docker secrets)
-
-More information about the project is in the [subject.pdf](https://github.com/mottjes/inception/blob/main/subject.pdf)
-
 ### Setup
 
 1. NGINX with TLSv1.2 or TLSv1.3 only
@@ -20,6 +11,17 @@ More information about the project is in the [subject.pdf](https://github.com/mo
 3. MariaDB (without NGINX)
 
 ![inception_architecture](https://github.com/user-attachments/assets/5ef856a8-2557-43d5-b91a-4e9703ab1dd9)
+
+### Prerequisites
+
+- Custom Dockerfiles for each service
+- Use Alpine or Debian (penultimate stable version)
+- No ready-made Docker images (except Alpine/Debian)
+- Two users in WordPress database (one administrator)
+- NGINX as the only entrypoint (port 443, TLSv1.2 or TLSv1.3)
+- Use of environment variables (recommended: .env file and Docker secrets)
+
+More information about the project is in the [subject.pdf](https://github.com/mottjes/inception/blob/main/subject.pdf)
 
 ## Usage
 
