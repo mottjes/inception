@@ -4,12 +4,7 @@ FROM debian:bullseye
 # Update package lists and install MariaDB server
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y mariadb-server && \
-# create necessary directory for the socket for MariaDb
-    mkdir -p /run/mysqld && \
-# sets correct permissions for the directory where the socket is being created
-    chown mysql:mysql /run/mysqld && \
-    chmod 755 /run/mysqld
+    apt install -y mariadb-server
 
 # Expose the default MariaDB port
 EXPOSE 3306
@@ -17,8 +12,14 @@ EXPOSE 3306
 # Copy MariaDB config to container
 COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
 
-# Copy MariaDB init script to container
-COPY ./tools/init.sql /etc/mysql/init.sql
+# Copy entrypoint script to container
+COPY ./tools/entrypoint.sh .
 
-# Start MariaDB in the foreground
+# Make the entrypoint script executable
+RUN chmod +x entrypoint.sh
+
+# Set the entrypoint to the script
+ENTRYPOINT ["./entrypoint.sh"]
+
+# provides default arguments for the ENTRYPOINT
 CMD ["mysqld"]

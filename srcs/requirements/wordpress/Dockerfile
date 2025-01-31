@@ -7,9 +7,7 @@ RUN apt update && \
     apt install -y \
     php7.4-fpm \
     php7.4-mysql \
-    curl  && \
-# create necessary directory for the socket for PHP_FPM
-    mkdir -p /run/php 
+    curl
 
 # Expose port 9000
 EXPOSE 9000
@@ -17,7 +15,7 @@ EXPOSE 9000
 # Copy PHP-FPM config to container
 COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/
 
-# Copy PHP-FPM config to container
+# Copy entrypoint script to container
 COPY ./tools/entrypoint.sh .
 
 # Make the entrypoint script executable
