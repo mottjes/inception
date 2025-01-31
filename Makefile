@@ -39,6 +39,7 @@ re: fclean start
 # TLS with docker secrets
 # change nginx server name to address
 # ifs for entrypoints
+# Check if WordPress is installed does not work
 # point login.42.fr to ip address
 # Makefile:
 # 	- mkdir /home/user/data/wordpress 
