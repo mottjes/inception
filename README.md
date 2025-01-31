@@ -19,7 +19,7 @@ Inception is a System Administration project focused on Docker and containerizat
 - No ready-made Docker images (except Alpine/Debian)
 - Two users in WordPress database (one administrator)
 - NGINX as the only entrypoint (port 443, TLSv1.2 or TLSv1.3)
-- Use of environment variables (recommended: .env file and Docker secrets)
+- Use of environment variables for sensitive data (.env file and Docker secrets)
 
 More information about the project is in the [subject.pdf](https://github.com/mottjes/inception/blob/main/subject.pdf)
 
