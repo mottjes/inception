@@ -2,7 +2,7 @@
 
 Inception is a System Administration project focused on Docker and containerization. It involves setting up a small infrastructure composed of different services using Docker containers.
 
-### ## Overview
+## Overview
 
 - Use Alpine or Debian (penultimate stable version)
 - Custom Dockerfiles for each service
