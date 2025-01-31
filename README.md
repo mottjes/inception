@@ -27,7 +27,7 @@ More information about the project is in the [subject.pdf](https://github.com/mo
 
 1. Clone the repository:
 ```
-git clone https://github.com/Xperaz/inception.git
+git clone https://github.com/mottjes/inception.git
 ```
 2. Navigate to the project directory:
 ```
