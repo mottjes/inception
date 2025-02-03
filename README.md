@@ -33,9 +33,26 @@ git clone https://github.com/mottjes/inception.git
 ```
 cd inception
 ```
-3. In the srcs folder, fill out the env.txt with and save it as srcs/.env
+3. In the srcs folder, create an .env with the following variables
+```
+# wordpress setup
+WP_URL=
+WP_TITLE=
 
-...
+WP_ADMIN_USER=
+WP_ADMIN_PASS=
+WP_ADMIN_EMAIL=
+
+WP_USER=
+WP_USER_EMAIL=
+WP_USER_PASS=
+
+# mariadb setup
+DB_NAME=
+DB_USER=
+DB_PASS=
+DB_HOST=
+```
 
 4. Build the images and deploy the infrastructure:
 ```
