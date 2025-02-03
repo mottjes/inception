@@ -6,10 +6,12 @@ mkdir -p /run/php
 # go into the right directory
 cd /var/www/html
 
-# Check if WP-CLI is installed
-if ! command -v wp &> /dev/null;
+# Check if WordPress config is there
+if [ -f ./wp-config.php ]
 then
-    echo "WP-CLI is not installed. Installing..."
+    echo "WordPress is already installed."
+else
+    echo "WordPress is not installed. Installing..."
 
     # Download WP-CLI
     curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
@@ -21,14 +23,6 @@ then
     mv wp-cli.phar /usr/local/bin/wp
 
     echo "WP-CLI installed successfully."
-else
-    echo "WP-CLI is already installed."
-fi
-
-# Check if WordPress is installed
-if ! wp core is-installed 2>/dev/null; 
-then
-    echo "WordPress is not installed. Installing..."
 
     # Download WordPress core on /var/www/html
     wp core download --path=/var/www/html --allow-root
@@ -46,8 +40,6 @@ then
     wp theme install twentytwentyfour --activate --allow-root
 
     echo "WordPress installed successfully."
-else
-    echo "WordPress is already installed."
 fi
 
 # to be able to delete wordpress data later on for testing purposes

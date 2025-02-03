@@ -35,15 +35,8 @@ prune:
 re: fclean start
 
 
-# theme install necessary ???
 # TLS with docker secrets
-# change nginx server name to address
-# ifs for entrypoints
-# Check if WordPress is installed does not work
-# point login.42.fr to ip address
-# Makefile:
-# 	- mkdir /home/user/data/wordpress 
-# 	- mkdir /home/user/data/mariadb
-# .gitignore .env and make ExampleEnvFile
-# eval sheet check
+
+# Makefile: - mkdir /home/user/data/wordpress - mkdir /home/user/data/mariadb
+
 # readme

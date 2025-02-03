@@ -33,7 +33,7 @@ git clone https://github.com/mottjes/inception.git
 ```
 cd inception
 ```
-3. In the srcs folder, fill out the ExampleEnvFile with and save it as srcs/.env
+3. In the srcs folder, fill out the env.txt with and save it as srcs/.env
 
 ...
 
