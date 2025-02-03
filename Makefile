@@ -34,9 +34,6 @@ prune:
 
 re: fclean start
 
-
-# TLS with docker secrets
-
-# Makefile: - mkdir /home/user/data/wordpress - mkdir /home/user/data/mariadb
-
-# readme
+# Makefile: - mkdir /home/user/data with /home/user/data/wordpress and /home/user/data/mariadb
+# finish readme
+# eval git clone from vogeshpere ???

@@ -7,7 +7,7 @@ RUN apt update && \
     apt install -y nginx
 
 # Expose port 80
-EXPOSE 80
+EXPOSE 443
 
 # Copy NGINX config to container
 COPY ./conf/default /etc/nginx/sites-available/

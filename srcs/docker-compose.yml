@@ -3,11 +3,14 @@ services:
     container_name: nginx
     build: requirements/nginx
     ports:
-      - "80:80"
+      - "443:443"
     volumes:
       - wordpress_data:/var/www/html
     networks:
       - inception
+    secrets:
+      - nginx-selfsigned.crt
+      - nginx-selfsigned.key
     depends_on:
       - wordpress
     restart: always
@@ -52,3 +55,9 @@ volumes:
 networks:
   inception:
     driver: bridge
+
+secrets:
+  nginx-selfsigned.crt:
+    file: ./requirements/nginx/tools/ssl/nginx-selfsigned.crt
+  nginx-selfsigned.key:
+    file: ./requirements/nginx/tools/ssl/nginx-selfsigned.key

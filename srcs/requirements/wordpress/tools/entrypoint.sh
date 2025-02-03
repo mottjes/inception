@@ -6,6 +6,9 @@ mkdir -p /run/php
 # go into the right directory
 cd /var/www/html
 
+# to be able to delete wordpress data later on for testing purposes
+chmod -R 777 /var/www/html
+
 # Check if WordPress config is there
 if [ -f ./wp-config.php ]
 then
@@ -31,7 +34,7 @@ else
     wp config create --dbname=$DB_NAME --dbuser=$DB_USER --dbpass=$DB_PASS --dbhost=$DB_HOST --allow-root
 
     # Install WordPress
-    wp core install --url=$WP_URL --title=$WP_TITLE --admin_user=$WP_ADMIN_USER --admin_password=$WP_ADMIN_PASS --admin_email=$WP_ADMIN_EMAIL --allow-root
+    wp core install --url=mottjes.42.fr --title=Inception --admin_user=$WP_ADMIN_USER --admin_password=$WP_ADMIN_PASS --admin_email=$WP_ADMIN_EMAIL --allow-root
 
     # create wordpress user
     wp user create $WP_USER $WP_USER_EMAIL --role=author --user_pass=$WP_USER_PASS --porcelain --allow-root
@@ -41,9 +44,6 @@ else
 
     echo "WordPress installed successfully."
 fi
-
-# to be able to delete wordpress data later on for testing purposes
-chmod -R 777 /var/www/html
 
 # Start PHP-FPM in the foreground
 exec "$@" 

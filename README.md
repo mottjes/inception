@@ -36,9 +36,6 @@ cd inception
 3. In the srcs folder, create an .env with the following variables
 ```
 # wordpress setup
-WP_URL=
-WP_TITLE=
-
 WP_ADMIN_USER=
 WP_ADMIN_PASS=
 WP_ADMIN_EMAIL=
