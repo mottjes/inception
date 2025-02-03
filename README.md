@@ -58,7 +58,7 @@ DB_HOST=
 ```
 sudo nano /etc/hosts
 ```
-paste in
+paste in:
 ```
 127.0.0.1 mottjes.42.fr
 ```
