@@ -12,7 +12,6 @@
 # Check if the init.sql is there
 if [ ! -f "/etc/mysql/init.sql" ];
 then
-    echo "Creating init.sql"
     echo "CREATE DATABASE IF NOT EXISTS $DB_NAME;" >> init.sql
     echo "CREATE USER IF NOT EXISTS '$DB_USER'@'%' IDENTIFIED BY '$DB_PASS';" >> init.sql
     echo "GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'%' IDENTIFIED BY '$DB_PASS';" >> init.sql

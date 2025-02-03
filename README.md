@@ -33,7 +33,11 @@ git clone https://github.com/mottjes/inception.git
 ```
 cd inception
 ```
-3. In the srcs folder, create an .env with the following variables
+3. Generate an self-signed SSL/TLS certificate and private key using OpenSSL for NGINX:
+```
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./srcs/requirements/nginx/tools/ssl/nginx-selfsigned.key -out ./srcs/requirements/nginx/tools/ssl/nginx-selfsigned.crt -subj "/C=DE/L=WOB/O=42/OU=student/CN=mottjes.42.fr"
+```
+4. In the srcs folder, create an .env with the following variables
 ```
 # wordpress setup
 WP_ADMIN_USER=
@@ -50,24 +54,31 @@ DB_USER=
 DB_PASS=
 DB_HOST=
 ```
-
-4. Build the images and deploy the infrastructure:
+5. edit the hosts file to acess the Wordpress website with mottjes.42.fr (optional)
+```
+sudo nano /etc/hosts
+```
+paste in
+```
+127.0.0.1 mottjes.42.fr
+```
+6. Build the images and deploy the infrastructure:
 ```
 make build
 ```
-5. Start the containers:
+7. Start the containers:
 ```
 make up
 ```
-6. Stop the containers:
+8. Stop the containers:
 ```
 make down
 ```
-7. Remove all containers, networks, and volumes
+9. Remove all containers, networks, and volumes
 ```
 make clean
 ```
-8. removes all Docker resources defined in the specified Docker Compose file and additionally removes local Docker images that were used by the services
+10. removes all Docker resources defined in the specified Docker Compose file and additionally removes local Docker images that were used by the services
 ```
 make fclean
 ```
