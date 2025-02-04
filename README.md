@@ -23,6 +23,12 @@ Inception is a System Administration project focused on Docker and containerizat
 
 More information about the project is in the [subject.pdf](https://github.com/mottjes/inception/blob/main/subject.pdf)
 
+## Prerequisites
+
+1. Install Docker and Docker Compose
+
+2. Add the user to the docker group (to run docker commands without sudo and root mode)
+
 ## Usage
 
 1. Clone the repository:
@@ -74,11 +80,7 @@ make up
 ```
 make down
 ```
-9. Remove all containers, networks, and volumes
+9. Remove all containers, images networks, and volumes
 ```
 make clean
-```
-10. removes all Docker resources defined in the specified Docker Compose file and additionally removes local Docker images that were used by the services
-```
-make fclean
 ```

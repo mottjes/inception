@@ -1,39 +1,31 @@
 COMPOSE_FILE = ./srcs/docker-compose.yml
+DATA_DIR = $(HOME)/data
 
-.PHONY: build up down logs clean help
+.PHONY: create_dirs build up down logs clean
 
-all: up
+all: create_dirs up
 
-# Build Docker images
-build: 
+create_dirs:
+	mkdir -p $(DATA_DIR)/wordpress
+	mkdir -p $(DATA_DIR)/mariadb
+
+build: create_dirs
 	docker compose -f $(COMPOSE_FILE) build
 
-# Start the application
-up: 
-	docker compose -f $(COMPOSE_FILE) up
+up: create_dirs
+	docker compose -f $(COMPOSE_FILE) up -d
 
-# Stop the application
 down:
 	docker compose -f $(COMPOSE_FILE) down
 
-# Remove all containers, networks, and volumes
+logs:
+	docker compose -f $(COMPOSE_FILE) logs -f
+
 clean: 
-	docker compose -f $(COMPOSE_FILE) down -v
-	rm -rf ~/data/mariadb/*
-	rm -rf ~/data/wordpress/*
+	docker compose -f $(COMPOSE_FILE) down --rmi all --volumes
+	rm -rf $(DATA_DIR)
 
-#removes all Docker resources defined in the specified Docker Compose file and additionally removes local Docker images that were used by the services
-fclean:
-	docker compose -f $(COMPOSE_FILE) down --rmi local -v
-	rm -rf ~/data/mariadb/*
-	rm -rf ~/data/wordpress/*
-
-# Remove all unused containers, networks, images and volumes
 prune:
 	docker system prune --all --force --volumes
 
-re: fclean start
-
-# Makefile: - mkdir /home/user/data with /home/user/data/wordpress and /home/user/data/mariadb
-# finish readme
-# eval git clone from vogeshpere ???
+re: clean up
