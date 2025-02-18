@@ -42,8 +42,5 @@ else
     echo "WordPress installed successfully."
 fi
 
-# to be able to delete wordpress data later on for testing purposes
-chmod -R 777 /var/www/html
-
 # Start PHP-FPM in the foreground
 exec "$@" 

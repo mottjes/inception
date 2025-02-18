@@ -3,9 +3,6 @@
 # Create necessary directory for the socket for MariaDB
     mkdir -p /var/run/mysqld
 
-# To be able to delete mariadb data later on for testing purposes
-    chmod -R 777 /var/lib/mysql
-
 # Set correct permissions for the directory where the socket is being created
     chown -R mysql:mysql /var/run/mysqld
 
