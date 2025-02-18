@@ -15,6 +15,7 @@ then
     echo "CREATE DATABASE IF NOT EXISTS $DB_NAME;" >> init.sql
     echo "CREATE USER IF NOT EXISTS '$DB_USER'@'%' IDENTIFIED BY '$DB_PASS';" >> init.sql
     echo "GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'%' IDENTIFIED BY '$DB_PASS';" >> init.sql
+    echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PASS';"
     echo "FLUSH PRIVILEGES;" >> init.sql
     mv init.sql /etc/mysql/init.sql
 fi

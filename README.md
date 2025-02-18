@@ -59,6 +59,7 @@ DB_NAME=
 DB_USER=
 DB_PASS=
 DB_HOST=
+DB_ROOT_PASS=
 ```
 5. edit the hosts file to acess the Wordpress website with mottjes.42.fr (optional)
 ```
