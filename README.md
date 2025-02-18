@@ -81,8 +81,8 @@ make up
 ```
 make down
 ```
-9. Remove all containers, images networks, and volumes
-(!!! Run with sudo to remove all the wordpress and mariadb files for a full clean !!!)
+9. Remove all containers, images networks, and volumes 
+( ! asks for sudo password, because we need sudo rights for removing all the mariadb and wordpress files for an full clean ! )
 ```
 make clean
 ```

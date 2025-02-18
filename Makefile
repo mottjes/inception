@@ -23,7 +23,7 @@ logs:
 
 clean: 
 	docker compose -f $(COMPOSE_FILE) down --rmi all --volumes
-	rm -rf $(DATA_DIR)
+	sudo rm -rf $(DATA_DIR)
 
 prune:
 	docker system prune --all --force --volumes
